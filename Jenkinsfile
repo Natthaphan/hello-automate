@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('unit test and report') {
             steps {
-                sh label: '', script: '''cd helloworld
+                sh label: 'cd', script: '''cd helloworld
                 go mod download
                 go test -v 2>&1 | go-junit-report > report.xml'''
             }
@@ -15,10 +15,18 @@ pipeline {
             }
         }
 
-        stage('build and start application') {
+        stage('run api test') {
 
             steps {
-                sh label: '', script: 'docker-compose up -d --build --force-recreate'
+                sh label: 'docker-compose', script: 'docker-compose up -d --build --force-recreate'
+            }
+        }
+
+        stage('run api test') {
+
+            steps {
+                sh label: 'robot', script: '''cd test/api 
+                robot greeting.robot'''
             }
 
             post {
