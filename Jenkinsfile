@@ -15,7 +15,7 @@ pipeline {
             }
         }
 
-        stage('run api test') {
+        stage('build and start application') {
 
             steps {
                 sh label: 'docker-compose', script: 'docker-compose up -d --build --force-recreate'
@@ -31,6 +31,7 @@ pipeline {
 
             post {
                 always {
+                    robot outputPath: '', unstableThreshold: 100.0
                     sh label: '', script: 'docker-compose down'
                 }
             }
