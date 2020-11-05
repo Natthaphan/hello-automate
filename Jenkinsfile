@@ -25,7 +25,7 @@ pipeline {
         stage('run api test') {
 
             steps {
-                sh label: 'robot', script: '''cd test/api 
+                sh label: 'robot', script: '''cd test/api
                 robot greeting.robot'''
             }
 
