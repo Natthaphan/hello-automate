@@ -1,0 +1,6 @@
+.DS_Store
+jenkins.war
+
+
+jenkinshome/
+test/api/env/
