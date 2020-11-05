@@ -9,8 +9,9 @@ services:
       dockerfile: Dockerfile
     environment:
       TIME_SERVER: time-api
+      PORT: 8000
     ports:
-      - '8080:8080'
+      - '8000:8000'
 
   time-api:
     image: time-api:0.0.1
@@ -20,5 +21,3 @@ services:
       dockerfile: Dockerfile
     environment:
       PORT: 8000
-    # ports:
-    #   - '8000:8000'
